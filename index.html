@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Feet — Feel Better Now</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --bg:           #fefcf5;
+      --bg-alt:       #f5f0e8;
+      --bg-dark:      #2b2926;
+      --text:         #404d6a;
+      --text-dark:    #2b2926;
+      --text-mid:     #585450;
+      --text-light:   #77736e;
+      --border:       #d8d6d4;
+      --accent:       #c9a46e;
+      --accent-light: #e8d5b5;
+      --white:        #ffffff;
+      --navy:         #404d6a;
+      --font-serif:   'DM Serif Display', Georgia, serif;
+      --font-sans:    'DM Sans', Arial, sans-serif;
+      --ease:         0.25s ease;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 30px;
+      letter-spacing: 0.5px;
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Layout ── */
+    .container  { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section    { padding: 96px 0; }
+    .section--sm { padding: 64px 0; }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; color: var(--text-dark); line-height: 1.15; }
+    h1 { font-size: clamp(40px, 6vw, 72px); }
+    h2 { font-size: clamp(28px, 4vw, 48px); }
+    h3 { font-size: clamp(20px, 2.5vw, 28px); }
+    h4 { font-size: 20px; }
+    .overline {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background var(--ease), color var(--ease), border-color var(--ease);
+      border: 1.5px solid transparent;
+    }
+    .btn-dark {
+      background: var(--text-dark);
+      color: var(--white);
+      border-color: var(--text-dark);
+    }
+    .btn-dark:hover { background: var(--text-mid); border-color: var(--text-mid); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border-color: var(--text-dark);
+    }
+    .btn-outline:hover { background: var(--text-dark); color: var(--white); }
+    .btn-white {
+      background: var(--white);
+      color: var(--text-dark);
+      border-color: var(--white);
+    }
+    .btn-white:hover { background: var(--bg-alt); border-color: var(--bg-alt); }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(254, 252, 245, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--ease);
+    }
+    .nav.scrolled { box-shadow: 0 2px 20px rgba(43, 41, 38, 0.08); }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      font-weight: 400;
+    }
+    .nav__logo span { font-style: italic; }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav__links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      transition: color var(--ease);
+    }
+    .nav__links a:hover { color: var(--text-dark); }
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav__menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav__menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text-dark);
+      transition: var(--ease);
+    }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 80px;
+      overflow: hidden;
+      margin-top: 72px;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(43, 41, 38, 0.65) 0%,
+        rgba(43, 41, 38, 0.15) 50%,
+        rgba(43, 41, 38, 0.0) 100%
+      );
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .hero__eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      color: var(--white);
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+    .hero__sub {
+      color: rgba(255,255,255,0.85);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* Floating badge */
+    .hero__badge {
+      position: absolute;
+      bottom: 80px;
+      right: 80px;
+      width: 120px;
+      height: 120px;
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 2px;
+    }
+    .hero__badge-top { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); }
+    .hero__badge-num { font-family: var(--font-serif); font-size: 36px; color: var(--text-dark); line-height: 1; }
+    .hero__badge-bot { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); }
+
+    /* ══════════════════════════════════════
+       MARQUEE STRIP
+    ══════════════════════════════════════ */
+    .marquee-strip {
+      background: var(--text-dark);
+      color: var(--white);
+      overflow: hidden;
+      padding: 14px 0;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0 40px;
+      opacity: 0.8;
+    }
+    .marquee-track .dot {
+      color: var(--accent);
+      font-size: 18px;
+      vertical-align: middle;
+      opacity: 1;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════════════
+       INTRO / ABOUT
+    ══════════════════════════════════════ */
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .intro__img {
+      aspect-ratio: 4 / 5;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .intro__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .intro__img:hover img { transform: scale(1.04); }
+    .intro__text { padding: 20px 0; }
+    .intro__text h2 { margin-bottom: 24px; }
+    .intro__text p {
+      color: var(--text-mid);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .intro__text .btn { margin-top: 16px; }
+
+    /* Stats row */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat__num {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat__label {
+      font-size: 13px;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+    }
+
+    /* ══════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════ */
+    .services { background: var(--bg-alt); }
+    .services__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+    }
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform var(--ease), box-shadow var(--ease);
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(43, 41, 38, 0.12);
+    }
+    .service-card__img {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+    }
+    .service-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover .service-card__img img { transform: scale(1.06); }
+    .service-card__body { padding: 28px 28px 32px; }
+    .service-card__tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .service-card h3 { font-size: 22px; margin-bottom: 12px; }
+    .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
+    .service-card__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .service-card__price {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: var(--text-dark);
+    }
+    .service-card__duration {
+      font-size: 13px;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+    }
+
+    /* ══════════════════════════════════════
+       DURATIONS
+    ══════════════════════════════════════ */
+    .durations__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .durations__left h2 { margin-bottom: 20px; }
+    .durations__left p { color: var(--text-mid); font-size: 17px; line-height: 1.8; margin-bottom: 32px; }
+    .duration-list { display: flex; flex-direction: column; gap: 16px; }
+    .duration-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 20px 24px;
+      background: var(--bg-alt);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      transition: border-color var(--ease), background var(--ease);
+      cursor: pointer;
+    }
+    .duration-item:hover { border-color: var(--text-dark); background: var(--bg); }
+    .duration-item__min {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      color: var(--text-dark);
+      line-height: 1;
+      min-width: 60px;
+    }
+    .duration-item__info h4 { font-size: 16px; font-family: var(--font-sans); font-weight: 500; margin-bottom: 2px; }
+    .duration-item__info p { font-size: 14px; color: var(--text-light); }
+    .duration-item__price {
+      margin-left: auto;
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--text-dark);
+    }
+    .durations__right {
+      aspect-ratio: 4 / 5;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .durations__right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ══════════════════════════════════════
+       MEMBERSHIP
+    ══════════════════════════════════════ */
+    .membership { background: var(--text-dark); color: var(--white); }
+    .membership h2 { color: var(--white); margin-bottom: 20px; }
+    .membership__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .membership__left p {
+      color: rgba(255,255,255,0.7);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .membership__left .overline { color: rgba(255,255,255,0.45); }
+    .perks { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .perk__icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(201, 164, 110, 0.25);
+      border: 1.5px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .perk__icon::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .perk__text { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .membership__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .membership-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 28px 32px;
+      position: relative;
+      transition: background var(--ease), border-color var(--ease);
+    }
+    .membership-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+    .membership-card--featured {
+      background: rgba(201, 164, 110, 0.12);
+      border-color: var(--accent);
+    }
+    .membership-card--featured:hover { background: rgba(201, 164, 110, 0.18); }
+    .membership-card__badge {
+      position: absolute;
+      top: -1px;
+      right: 24px;
+      background: var(--accent);
+      color: var(--text-dark);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 0 0 4px 4px;
+    }
+    .membership-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .membership-card h3 { font-size: 20px; color: var(--white); margin-bottom: 4px; }
+    .membership-card__sub { font-size: 14px; color: rgba(255,255,255,0.5); }
+    .membership-card__price {
+      text-align: right;
+    }
+    .membership-card__amount {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      color: var(--white);
+      line-height: 1;
+    }
+    .membership-card__per { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+    .membership-card__divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 16px 0;
+    }
+    .membership-card__features {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════
+       EXPERIENCE
+    ══════════════════════════════════════ */
+    .experience__header { text-align: center; max-width: 600px; margin: 0 auto 64px; }
+    .experience__header h2 { margin-bottom: 16px; }
+    .experience__header p { color: var(--text-mid); font-size: 17px; }
+    .experience__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .exp-tile {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .exp-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .exp-tile:hover img { transform: scale(1.08); }
+    .exp-tile__label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 20px 20px;
+      background: linear-gradient(to top, rgba(43,41,38,0.7) 0%, transparent 100%);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transform: translateY(4px);
+      transition: transform var(--ease);
+    }
+    .exp-tile:hover .exp-tile__label { transform: translateY(0); }
+
+    /* ══════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════ */
+    .testimonials { background: var(--bg-alt); }
+    .testimonials__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+    }
+    .stars {
+      color: var(--accent);
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .testimonial-card blockquote {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-card__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .testimonial-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testimonial-card__name { font-size: 15px; font-weight: 500; color: var(--text-dark); }
+    .testimonial-card__loc { font-size: 13px; color: var(--text-light); }
+
+    /* Rating summary */
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 32px 0;
+      margin-bottom: 48px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .rating-num {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+    .rating-right { }
+    .rating-bar-row { display: flex; align-items: center; gap: 10px; margin: 3px 0; }
+    .rating-bar-label { font-size: 13px; color: var(--text-light); width: 20px; }
+    .rating-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .rating-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+    /* ══════════════════════════════════════
+       CTA BANNER
+    ══════════════════════════════════════ */
+    .cta-banner {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+    .cta-banner__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1600&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .cta-banner__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(43, 41, 38, 0.55);
+    }
+    .cta-banner__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+    }
+    .cta-banner__content .overline { color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+    .cta-banner__content h2 { color: var(--white); font-style: italic; margin-bottom: 20px; font-size: clamp(32px, 5vw, 56px); }
+    .cta-banner__content p { color: rgba(255,255,255,0.75); font-size: 17px; max-width: 480px; margin: 0 auto 36px; }
+    .cta-banner__content .cta-btns { display: flex; gap: 16px; justify-content: center; }
+
+    /* ══════════════════════════════════════
+       LOCATIONS
+    ══════════════════════════════════════ */
+    .locations__header { text-align: center; margin-bottom: 56px; }
+    .locations__header h2 { margin-bottom: 12px; }
+    .locations__header p { color: var(--text-mid); font-size: 17px; }
+    .locations__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .location-card {
+      padding: 28px;
+      background: var(--bg-alt);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .location-card:hover { border-color: var(--text-dark); transform: translateY(-4px); }
+    .location-card__city {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .location-card__addr { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+    .location-card__link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color var(--ease);
+    }
+    .location-card__link::after { content: '→'; }
+    .location-card:hover .location-card__link { color: var(--text-dark); }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer { background: var(--bg-dark); color: rgba(255,255,255,0.65); }
+    .footer__top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding: 80px 0 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer__brand-name {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .footer__brand-name span { font-style: italic; }
+    .footer__tagline { font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
+    .footer__socials { display: flex; gap: 16px; }
+    .footer__social {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: border-color var(--ease), background var(--ease);
+    }
+    .footer__social:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); }
+    .footer__col-title {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer__col-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer__col-links a {
+      font-size: 15px;
+      transition: color var(--ease);
+    }
+    .footer__col-links a:hover { color: var(--white); }
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      font-size: 13px;
+    }
+    .footer__legal { display: flex; gap: 24px; }
+    .footer__legal a:hover { color: var(--white); }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .intro { grid-template-columns: 1fr; gap: 48px; }
+      .intro__img { max-width: 600px; }
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
+      .durations__inner { grid-template-columns: 1fr; gap: 48px; }
+      .membership__inner { grid-template-columns: 1fr; gap: 48px; }
+      .experience__grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+      .locations__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .section { padding: 64px 0; }
+      .nav__links { display: none; }
+      .nav__menu-toggle { display: flex; }
+      .hero { min-height: 85vh; }
+      .hero__badge { display: none; }
+      .services__header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .services__grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; gap: 24px; }
+      .experience__grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .testimonials__grid { grid-template-columns: 1fr; }
+      .locations__grid { grid-template-columns: 1fr 1fr; }
+      .footer__top { grid-template-columns: 1fr; gap: 36px; }
+      .footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .rating-summary { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .cta-banner__content .cta-btns { flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .experience__grid { grid-template-columns: 1fr 1fr; }
+      .locations__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo">Top Feet</a>
+        <ul class="nav__links">
+          <li><a href="#services">Massages</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+        <div class="nav__right">
+          <a href="#" class="btn btn-dark">Book Now</a>
+          <button class="nav__menu-toggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Premium Massage Boutique</p>
+        <h1>Feel better.<br>Right now.</h1>
+        <p class="hero__sub">Walk in or book online. Expert massages starting at $79. No commitment required — because you deserve to feel good today.</p>
+        <div class="hero__ctas">
+          <a href="#" class="btn btn-white">Book a Massage</a>
+          <a href="#membership" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.6);">Explore Membership</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__badge">
+      <span class="hero__badge-top">Over</span>
+      <span class="hero__badge-num">50K</span>
+      <span class="hero__badge-bot">5-star reviews</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MARQUEE
+  ══════════════════════════════════════ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Swedish Massage</span><span class="dot">·</span>
+      <span>Deep Tissue</span><span class="dot">·</span>
+      <span>Sports Massage</span><span class="dot">·</span>
+      <span>Prenatal</span><span class="dot">·</span>
+      <span>Walk-Ins Welcome</span><span class="dot">·</span>
+      <span>Membership Available</span><span class="dot">·</span>
+      <span>60 · 90 · 120 Min</span><span class="dot">·</span>
+      <span>Swedish Massage</span><span class="dot">·</span>
+      <span>Deep Tissue</span><span class="dot">·</span>
+      <span>Sports Massage</span><span class="dot">·</span>
+      <span>Prenatal</span><span class="dot">·</span>
+      <span>Walk-Ins Welcome</span><span class="dot">·</span>
+      <span>Membership Available</span><span class="dot">·</span>
+      <span>60 · 90 · 120 Min</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       INTRO / ABOUT
+  ══════════════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="intro">
+        <div class="intro__img">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80&fit=crop" alt="Relaxing massage therapy" loading="lazy" />
+        </div>
+        <div class="intro__text">
+          <span class="overline">Our Philosophy</span>
+          <h2>Massage shouldn't be a luxury.<br>It should be a habit.</h2>
+          <p>We built Top Feet around a simple belief: regular massage improves your quality of life. That's why we make it accessible, consistent, and completely stress-free.</p>
+          <p>No upsells, no pressure, no gimmicks. Just expert therapists, premium products, and a space designed entirely around how you feel when you walk out the door.</p>
+          <a href="#services" class="btn btn-outline">See Our Services</a>
+          <div class="stats">
+            <div>
+              <div class="stat__num">100+</div>
+              <div class="stat__label">Locations nationwide</div>
+            </div>
+            <div>
+              <div class="stat__num">50K+</div>
+              <div class="stat__label">Five-star reviews</div>
+            </div>
+            <div>
+              <div class="stat__num">1M+</div>
+              <div class="stat__label">Massages performed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════ -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="services__header">
+        <div>
+          <span class="overline">What We Offer</span>
+          <h2>Every massage,<br>perfectly tailored.</h2>
+        </div>
+        <a href="#" class="btn btn-outline">View All Services</a>
+      </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&fit=crop" alt="Swedish Massage" loading="lazy" />
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__tag">Most Popular</div>
+            <h3>Swedish Massage</h3>
+            <p>Long, flowing strokes that melt away tension and leave you feeling completely renewed. The perfect introduction to massage therapy.</p>
+            <div class="service-card__footer">
+              <span class="service-card__price">From $79</span>
+              <span class="service-card__duration">60 / 90 / 120 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=600&q=80&fit=crop" alt="Deep Tissue Massage" loading="lazy" />
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__tag">Therapeutic</div>
+            <h3>Deep Tissue Massage</h3>
+            <p>Targeted pressure that reaches deeper muscle layers to break up knots, relieve chronic pain, and restore full range of motion.</p>
+            <div class="service-card__footer">
+              <span class="service-card__price">From $89</span>
+              <span class="service-card__duration">60 / 90 / 120 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80&fit=crop" alt="Sports Massage" loading="lazy" />
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__tag">Active Recovery</div>
+            <h3>Sports Massage</h3>
+            <p>Designed for active bodies. Combines stretching and targeted techniques to speed up recovery, improve performance, and prevent injury.</p>
+            <div class="service-card__footer">
+              <span class="service-card__price">From $89</span>
+              <span class="service-card__duration">60 / 90 / 120 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80&fit=crop" alt="Prenatal Massage" loading="lazy" />
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__tag">Specialty</div>
+            <h3>Prenatal Massage</h3>
+            <p>Gentle, safe techniques specifically designed for expectant mothers to ease discomfort, reduce swelling, and promote deep relaxation.</p>
+            <div class="service-card__footer">
+              <span class="service-card__price">From $89</span>
+              <span class="service-card__duration">60 / 90 / 120 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&fit=crop" alt="CBD Massage" loading="lazy" />
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__tag">Enhanced</div>
+            <h3>CBD Oil Add-On</h3>
+            <p>Elevate any massage with full-spectrum CBD oil for enhanced anti-inflammatory benefits, deeper relaxation, and faster recovery.</p>
+            <div class="service-card__footer">
+              <span class="service-card__price">+$25</span>
+              <span class="service-card__duration">Add to any service</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__img">
+            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80&fit=crop" alt="Aromatherapy" loading="lazy" />
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__tag">Enhanced</div>
+            <h3>Aromatherapy Add-On</h3>
+            <p>Custom essential oil blends added to your session for targeted benefits — whether calming, energizing, or pain-relieving.</p>
+            <div class="service-card__footer">
+              <span class="service-card__price">+$15</span>
+              <span class="service-card__duration">Add to any service</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       DURATIONS
+  ══════════════════════════════════════ -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="durations__inner">
+        <div class="durations__left">
+          <span class="overline">Session Lengths</span>
+          <h2>Choose the time that's right for you.</h2>
+          <p>Every session is designed to be complete in itself. Whether you have an hour or two, you'll leave feeling exactly how you came for.</p>
+          <div class="duration-list">
+            <div class="duration-item">
+              <span class="duration-item__min">60</span>
+              <div class="duration-item__info">
+                <h4>One Hour</h4>
+                <p>Full-body reset, perfectly efficient</p>
+              </div>
+              <span class="duration-item__price">$79</span>
+            </div>
+            <div class="duration-item">
+              <span class="duration-item__min">90</span>
+              <div class="duration-item__info">
+                <h4>Ninety Minutes</h4>
+                <p>Extended focus on problem areas</p>
+              </div>
+              <span class="duration-item__price">$109</span>
+            </div>
+            <div class="duration-item">
+              <span class="duration-item__min">120</span>
+              <div class="duration-item__info">
+                <h4>Two Hours</h4>
+                <p>Complete, unhurried full-body experience</p>
+              </div>
+              <span class="duration-item__price">$139</span>
+            </div>
+          </div>
+        </div>
+        <div class="durations__right">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80&fit=crop" alt="Massage session" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MEMBERSHIP
+  ══════════════════════════════════════ -->
+  <section class="section membership" id="membership">
+    <div class="container">
+      <div class="membership__inner">
+        <div class="membership__left">
+          <span class="overline">Top Feet Membership</span>
+          <h2>Make feeling good<br>a monthly habit.</h2>
+          <p>Members save up to 30% on every visit, get priority booking, and earn rollover credits. Cancel anytime — no catch, no fine print.</p>
+          <div class="perks">
+            <div class="perk">
+              <div class="perk__icon"></div>
+              <span class="perk__text">One massage credit per month, fully rollover</span>
+            </div>
+            <div class="perk">
+              <div class="perk__icon"></div>
+              <span class="perk__text">Up to 30% off all additional services</span>
+            </div>
+            <div class="perk">
+              <div class="perk__icon"></div>
+              <span class="perk__text">Priority booking at any location nationwide</span>
+            </div>
+            <div class="perk">
+              <div class="perk__icon"></div>
+              <span class="perk__text">Free add-ons and exclusive member events</span>
+            </div>
+            <div class="perk">
+              <div class="perk__icon"></div>
+              <span class="perk__text">Share credits with friends and family</span>
+            </div>
+          </div>
+          <a href="#" class="btn btn-white">Join Top Feet</a>
+        </div>
+        <div class="membership__cards">
+          <div class="membership-card">
+            <div class="membership-card__top">
+              <div>
+                <h3>60 Min Membership</h3>
+                <div class="membership-card__sub">One session per month</div>
+              </div>
+              <div class="membership-card__price">
+                <div class="membership-card__amount">$69</div>
+                <div class="membership-card__per">/ month</div>
+              </div>
+            </div>
+            <div class="membership-card__divider"></div>
+            <div class="membership-card__features">Swedish or Deep Tissue · Rollover credits · 20% off extras</div>
+          </div>
+          <div class="membership-card membership-card--featured">
+            <div class="membership-card__badge">Most Popular</div>
+            <div class="membership-card__top">
+              <div>
+                <h3>90 Min Membership</h3>
+                <div class="membership-card__sub">One session per month</div>
+              </div>
+              <div class="membership-card__price">
+                <div class="membership-card__amount">$89</div>
+                <div class="membership-card__per">/ month</div>
+              </div>
+            </div>
+            <div class="membership-card__divider"></div>
+            <div class="membership-card__features">Any massage type · Rollover credits · 25% off extras · Priority booking</div>
+          </div>
+          <div class="membership-card">
+            <div class="membership-card__top">
+              <div>
+                <h3>120 Min Membership</h3>
+                <div class="membership-card__sub">One session per month</div>
+              </div>
+              <div class="membership-card__price">
+                <div class="membership-card__amount">$109</div>
+                <div class="membership-card__per">/ month</div>
+              </div>
+            </div>
+            <div class="membership-card__divider"></div>
+            <div class="membership-card__features">Any massage type · Rollover credits · 30% off extras · Priority booking · Free add-on</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       EXPERIENCE GALLERY
+  ══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="experience__header">
+        <span class="overline">The Experience</span>
+        <h2>Every detail, intentionally designed.</h2>
+        <p>From the moment you walk in to the moment you float out, every element of Top Feet is designed to make you feel exactly that.</p>
+      </div>
+    </div>
+    <div class="experience__grid">
+      <div class="exp-tile">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&fit=crop" alt="Spa interior" loading="lazy" />
+        <div class="exp-tile__label">Calm Interiors</div>
+      </div>
+      <div class="exp-tile">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&fit=crop" alt="Massage treatment" loading="lazy" />
+        <div class="exp-tile__label">Expert Therapists</div>
+      </div>
+      <div class="exp-tile">
+        <img src="https://images.unsplash.com/photo-1599598425947-5202edd56bdb?w=600&q=80&fit=crop" alt="Aromatherapy oils" loading="lazy" />
+        <div class="exp-tile__label">Premium Products</div>
+      </div>
+      <div class="exp-tile">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80&fit=crop" alt="Relaxation" loading="lazy" />
+        <div class="exp-tile__label">Total Relaxation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════ -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="testimonials__header">
+        <div>
+          <span class="overline">Guest Reviews</span>
+          <h2>Thousands come in tense.<br>Everyone leaves renewed.</h2>
+        </div>
+        <a href="#" class="btn btn-outline">Read More Reviews</a>
+      </div>
+
+      <div class="rating-summary">
+        <div class="rating-num">4.9</div>
+        <div class="rating-right">
+          <div class="stars">★★★★★</div>
+          <div style="font-size:14px;color:var(--text-light);margin-bottom:12px;">Based on 50,000+ reviews</div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">5</span>
+            <div class="rating-bar"><div class="rating-bar-fill" style="width:88%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">4</span>
+            <div class="rating-bar"><div class="rating-bar-fill" style="width:9%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">3</span>
+            <div class="rating-bar"><div class="rating-bar-fill" style="width:2%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">2</span>
+            <div class="rating-bar"><div class="rating-bar-fill" style="width:1%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">1</span>
+            <div class="rating-bar"><div class="rating-bar-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials__grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"I've been to a lot of massage studios, but Top Feet is on another level. The therapist really listened to exactly what I needed and the 90 minute session flew by. Already booked my next one."</blockquote>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&fit=crop&crop=face" alt="Sarah M." />
+            </div>
+            <div>
+              <div class="testimonial-card__name">Sarah M.</div>
+              <div class="testimonial-card__loc">Los Angeles, CA</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Top Feet membership has been a game changer for my recovery routine. As someone who runs marathons, having monthly access to their sports massage is worth every penny. The rollover credits are a huge bonus."</blockquote>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&fit=crop&crop=face" alt="Marcus T." />
+            </div>
+            <div>
+              <div class="testimonial-card__name">Marcus T.</div>
+              <div class="testimonial-card__loc">Austin, TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"I went in for my first prenatal massage and was nervous about how it would go. The therapist was incredibly knowledgeable and made me feel completely at ease. Best two hours of my pregnancy so far."</blockquote>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&fit=crop&crop=face" alt="Jessica L." />
+            </div>
+            <div>
+              <div class="testimonial-card__name">Jessica L.</div>
+              <div class="testimonial-card__loc">Denver, CO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CTA BANNER
+  ══════════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="cta-banner__bg"></div>
+    <div class="cta-banner__overlay"></div>
+    <div class="container cta-banner__content">
+      <span class="overline">Walk-ins Welcome</span>
+      <h2>Ready to feel better?<br>We're ready for you.</h2>
+      <p>Book online in 60 seconds, or just walk in. No forms, no wait lists, no stress. Just the best massage of your week.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn btn-white">Book Online</a>
+        <a href="#locations" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.5);">Find a Location</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       LOCATIONS
+  ══════════════════════════════════════ -->
+  <section class="section" id="locations">
+    <div class="container">
+      <div class="locations__header">
+        <span class="overline">Find Us</span>
+        <h2>100+ locations and growing.</h2>
+        <p>From coast to coast, there's a Now near you.</p>
+      </div>
+      <div class="locations__grid">
+        <div class="location-card">
+          <div class="location-card__city">Los Angeles</div>
+          <div class="location-card__addr">8370 W Sunset Blvd<br>West Hollywood, CA 90069</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card">
+          <div class="location-card__city">New York</div>
+          <div class="location-card__addr">1140 Broadway, Suite 2<br>New York, NY 10001</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card">
+          <div class="location-card__city">Austin</div>
+          <div class="location-card__addr">3815 S Lamar Blvd, Suite 100<br>Austin, TX 78704</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card">
+          <div class="location-card__city">Chicago</div>
+          <div class="location-card__addr">212 W Superior St<br>Chicago, IL 60654</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card">
+          <div class="location-card__city">Miami</div>
+          <div class="location-card__addr">3015 Grand Ave, Suite 320<br>Coconut Grove, FL 33133</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card">
+          <div class="location-card__city">San Francisco</div>
+          <div class="location-card__addr">2121 Fillmore St<br>San Francisco, CA 94115</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card">
+          <div class="location-card__city">Seattle</div>
+          <div class="location-card__addr">520 Pike St, Suite 1600<br>Seattle, WA 98101</div>
+          <a href="#" class="location-card__link">Get Directions</a>
+        </div>
+        <div class="location-card" style="background:var(--text-dark);border-color:var(--text-dark);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+          <div class="location-card__city" style="color:#fff;font-size:18px;margin-bottom:8px;">+ 93 more locations</div>
+          <div class="location-card__addr" style="color:rgba(255,255,255,0.55);">Find the one nearest you</div>
+          <a href="#" style="margin-top:20px;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px;">See All Locations →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand-name">Top Feet</div>
+          <p class="footer__tagline">Premium massage boutique. Walk-in friendly. Membership available. 100+ locations nationwide.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social" aria-label="Instagram">IG</a>
+            <a href="#" class="footer__social" aria-label="Facebook">FB</a>
+            <a href="#" class="footer__social" aria-label="TikTok">TK</a>
+            <a href="#" class="footer__social" aria-label="X/Twitter">X</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Services</div>
+          <ul class="footer__col-links">
+            <li><a href="#">Swedish Massage</a></li>
+            <li><a href="#">Deep Tissue</a></li>
+            <li><a href="#">Sports Massage</a></li>
+            <li><a href="#">Prenatal Massage</a></li>
+            <li><a href="#">Add-Ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Company</div>
+          <ul class="footer__col-links">
+            <li><a href="#">About Top Feet</a></li>
+            <li><a href="#">Membership</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Franchise</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Support</div>
+          <ul class="footer__col-links">
+            <li><a href="#">Find a Location</a></li>
+            <li><a href="#">Book Online</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Therapist Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>© 2026 Top Feet Massage. All rights reserved.</div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .testimonial-card, .location-card, .membership-card, .duration-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
