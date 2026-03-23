@@ -1,8 +1,3 @@
 .tmp/
 *.env
 .env
-brand_assets/
-config/
-workflows/
-*.png
-*.jpg

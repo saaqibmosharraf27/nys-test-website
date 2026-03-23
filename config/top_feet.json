@@ -1,0 +1,158 @@
+{
+  "business": {
+    "name": "Top Feet",
+    "tagline": "Foot & Massage",
+    "description": "Your local sanctuary for foot reflexology, massage therapy, and holistic wellness. Because you deserve to feel your best."
+  },
+  "brand": {
+    "logo": "brand_assets/top feet logo.png",
+    "colors": {
+      "background":      "#0B1420",
+      "background_mid":  "#111D33",
+      "background_card": "#152035",
+      "accent":          "#02CCFE",
+      "accent_dim":      "#01A8D4",
+      "gold":            "#C9A84C",
+      "gold_light":      "#E0C06A",
+      "text":            "#FFFFFF"
+    },
+    "fonts": {
+      "primary":   "Roboto Mono",
+      "secondary": "Montserrat"
+    }
+  },
+  "hero": {
+    "badge": "Now Accepting New Clients",
+    "headline_line1": "Restore Your",
+    "headline_line2": "Body & Soul",
+    "headline_line3": "With Expert Care",
+    "description": "Premium foot reflexology and full-body massage services designed to melt away stress, relieve tension, and restore your natural balance. Your wellness journey starts here."
+  },
+  "stats": [
+    { "number": "5K+", "label": "Happy Clients" },
+    { "number": "12+", "label": "Years Experience" },
+    { "number": "4.9", "label": "Average Rating" }
+  ],
+  "services": [
+    {
+      "icon": "🦶",
+      "name": "Foot Reflexology",
+      "description": "Ancient healing art targeting pressure points on your feet that correspond to organs and systems throughout your body. Deep relief from the ground up.",
+      "price": "from $45",
+      "duration": "30 / 60 / 90 min",
+      "featured": false
+    },
+    {
+      "icon": "💆",
+      "name": "Full Body Massage",
+      "description": "A head-to-toe therapeutic experience that targets muscle tension, improves circulation, and leaves you in a state of complete relaxation and renewal.",
+      "price": "from $75",
+      "duration": "60 / 90 / 120 min",
+      "featured": true
+    },
+    {
+      "icon": "🪨",
+      "name": "Hot Stone Therapy",
+      "description": "Smooth, heated volcanic stones placed at key points on the body. The warmth penetrates deep into muscle tissue, releasing chronic tension and stress.",
+      "price": "from $90",
+      "duration": "75 / 90 min",
+      "featured": false
+    },
+    {
+      "icon": "💪",
+      "name": "Deep Tissue Massage",
+      "description": "Firm, targeted pressure to reach the deeper layers of muscle and fascia. Ideal for chronic pain, sports recovery, and stubborn tension knots.",
+      "price": "from $80",
+      "duration": "60 / 90 min",
+      "featured": false
+    },
+    {
+      "icon": "🌿",
+      "name": "Aromatherapy",
+      "description": "Combining the power of essential oils with gentle massage techniques to balance your mind, body, and spirit. Calming, energizing, or uplifting blends.",
+      "price": "from $70",
+      "duration": "60 / 90 min",
+      "featured": false
+    },
+    {
+      "icon": "👫",
+      "name": "Couples Retreat",
+      "description": "Share the gift of relaxation side-by-side. Our couples suite offers a private, intimate setting for two to experience synchronized massage and total tranquility.",
+      "price": "from $150",
+      "duration": "60 / 90 min",
+      "featured": false
+    }
+  ],
+  "experience": {
+    "tag": "Why Top Feet",
+    "title_line1": "A Sanctuary Built",
+    "title_line2": "Around You",
+    "description": "We believe true wellness starts the moment you walk through our doors. Every detail of your visit is designed to help you feel better — not just during your session, but long after.",
+    "features": [
+      {
+        "icon": "🎓",
+        "title": "Certified Expert Therapists",
+        "description": "All therapists are licensed, trained, and continuously educated in the latest techniques."
+      },
+      {
+        "icon": "✨",
+        "title": "Premium Products Only",
+        "description": "We use top-grade organic oils, lotions, and aromatherapy blends for your skin and senses."
+      },
+      {
+        "icon": "🏡",
+        "title": "Calming, Private Environment",
+        "description": "Our spa rooms are designed as personal sanctuaries — quiet, warm, and completely private."
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "initials": "SM",
+      "name": "Sarah M.",
+      "info": "Regular Client · 2 yrs",
+      "rating": 5,
+      "text": "I've been to many spas over the years, but Top Feet is on another level. The foot reflexology session completely transformed my chronic back pain. I walked in hunched and walked out standing straight. Absolutely incredible."
+    },
+    {
+      "initials": "JL",
+      "name": "Jennifer L.",
+      "info": "Couples Retreat · 3 visits",
+      "rating": 5,
+      "text": "My husband and I did the couples retreat for our anniversary — best decision we ever made. The staff was professional, the room was stunning, and the massage was deeply relaxing. We've already booked our next visit."
+    },
+    {
+      "initials": "MR",
+      "name": "Marcus R.",
+      "info": "Deep Tissue · Weekly client",
+      "rating": 5,
+      "text": "As an athlete, recovery is everything. The deep tissue sessions at Top Feet have become a non-negotiable part of my training. The therapists actually understand anatomy and target exactly what needs work."
+    }
+  ],
+  "contact": {
+    "address": "123 Wellness Blvd, Suite 200, Your City",
+    "phone": "(555) 123-4567",
+    "email": "hello@topfeet.com",
+    "hours_summary": "Mon–Sat: 9am–9pm · Sun: 10am–7pm",
+    "hours": [
+      { "day": "Mon – Fri", "time": "9AM – 9PM" },
+      { "day": "Saturday",  "time": "9AM – 9PM" },
+      { "day": "Sunday",    "time": "10AM – 7PM" }
+    ]
+  },
+  "booking": {
+    "services": [
+      { "value": "reflexology",  "label": "Foot Reflexology" },
+      { "value": "fullbody",     "label": "Full Body Massage" },
+      { "value": "hotstone",     "label": "Hot Stone Therapy" },
+      { "value": "deeptissue",   "label": "Deep Tissue Massage" },
+      { "value": "aromatherapy", "label": "Aromatherapy" },
+      { "value": "couples",      "label": "Couples Retreat" }
+    ],
+    "time_slots": [
+      "9:00 AM","10:00 AM","11:00 AM","12:00 PM",
+      "1:00 PM","2:00 PM","3:00 PM","4:00 PM",
+      "5:00 PM","6:00 PM","7:00 PM"
+    ]
+  }
+}
