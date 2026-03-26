@@ -3,1399 +3,1610 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top Feet — Feel Better Now</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <title>Angel's Touch Detailing — Premium Auto Care, Defined</title>
   <style>
-    /* ── Design Tokens ── */
-    :root {
-      --bg:           #fefcf5;
-      --bg-alt:       #f5f0e8;
-      --bg-dark:      #2b2926;
-      --text:         #404d6a;
-      --text-dark:    #2b2926;
-      --text-mid:     #585450;
-      --text-light:   #77736e;
-      --border:       #d8d6d4;
-      --accent:       #c9a46e;
-      --accent-light: #e8d5b5;
-      --white:        #ffffff;
-      --navy:         #404d6a;
-      --font-serif:   'DM Serif Display', Georgia, serif;
-      --font-sans:    'DM Sans', Arial, sans-serif;
-      --ease:         0.25s ease;
-    }
-
-    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy:        #002B67;
+      --navy-dark:   #001E4D;
+      --navy-light:  #E8EEF8;
+      --blue:        #1A6FD4;
+      --blue-dark:   #1561C0;
+      --blue-light:  #EBF3FF;
+      --gray-bg:     #F4F7FD;
+      --gray-100:    #EBF0F8;
+      --gray-200:    #D8E3F0;
+      --gray-400:    #9CA3AF;
+      --gray-500:    #6B7280;
+      --gray-700:    #374151;
+      --gray-800:    #1F2937;
+      --white:       #FFFFFF;
+      --shadow:      0 1px 3px rgba(0,43,103,.08), 0 1px 2px rgba(0,43,103,.05);
+      --shadow-md:   0 4px 6px -1px rgba(0,43,103,.1), 0 2px 4px -1px rgba(0,43,103,.06);
+      --radius:      12px;
+      --font-head:   Georgia, "Times New Roman", serif;
+      --font-body:   ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
     body {
-      font-family: var(--font-sans);
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 30px;
-      letter-spacing: 0.5px;
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-
-    /* ── Layout ── */
-    .container  { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-    .section    { padding: 96px 0; }
-    .section--sm { padding: 64px 0; }
-
-    /* ── Typography ── */
-    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; color: var(--text-dark); line-height: 1.15; }
-    h1 { font-size: clamp(40px, 6vw, 72px); }
-    h2 { font-size: clamp(28px, 4vw, 48px); }
-    h3 { font-size: clamp(20px, 2.5vw, 28px); }
-    h4 { font-size: 20px; }
-    .overline {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--text-light);
-      display: block;
-      margin-bottom: 16px;
+      font-family: var(--font-body);
+      background: var(--gray-bg);
+      color: var(--gray-800);
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Buttons ── */
-    .btn {
-      display: inline-block;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background var(--ease), color var(--ease), border-color var(--ease);
-      border: 1.5px solid transparent;
-    }
-    .btn-dark {
-      background: var(--text-dark);
-      color: var(--white);
-      border-color: var(--text-dark);
-    }
-    .btn-dark:hover { background: var(--text-mid); border-color: var(--text-mid); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text-dark);
-      border-color: var(--text-dark);
-    }
-    .btn-outline:hover { background: var(--text-dark); color: var(--white); }
-    .btn-white {
-      background: var(--white);
-      color: var(--text-dark);
-      border-color: var(--white);
-    }
-    .btn-white:hover { background: var(--bg-alt); border-color: var(--bg-alt); }
+    .container { max-width: 480px; margin: 0 auto; padding: 0 16px; }
 
-    /* ══════════════════════════════════════
-       NAV
-    ══════════════════════════════════════ */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(254, 252, 245, 0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow var(--ease);
-    }
-    .nav.scrolled { box-shadow: 0 2px 20px rgba(43, 41, 38, 0.08); }
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav__logo {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      font-weight: 400;
-    }
-    .nav__logo span { font-style: italic; }
-    .nav__links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
-    .nav__links a {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      transition: color var(--ease);
-    }
-    .nav__links a:hover { color: var(--text-dark); }
-    .nav__right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .nav__menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav__menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--text-dark);
-      transition: var(--ease);
-    }
-
-    /* ══════════════════════════════════════
-       HERO
-    ══════════════════════════════════════ */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      padding-bottom: 80px;
-      overflow: hidden;
-      margin-top: 72px;
-    }
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80&fit=crop');
-      background-size: cover;
-      background-position: center 30%;
-    }
-    .hero__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(43, 41, 38, 0.65) 0%,
-        rgba(43, 41, 38, 0.15) 50%,
-        rgba(43, 41, 38, 0.0) 100%
-      );
-    }
-    .hero__content {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-    }
-    .hero__eyebrow {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      color: var(--white);
-      font-style: italic;
-      margin-bottom: 28px;
-    }
-    .hero__sub {
-      color: rgba(255,255,255,0.85);
-      font-size: 17px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-      max-width: 480px;
-    }
-    .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-
-    /* Floating badge */
-    .hero__badge {
-      position: absolute;
-      bottom: 80px;
-      right: 80px;
-      width: 120px;
-      height: 120px;
-      background: var(--bg);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* ── Header ── */
+    header {
+      background: var(--gray-bg);
+      padding: 28px 16px 22px;
       text-align: center;
-      gap: 2px;
-    }
-    .hero__badge-top { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); }
-    .hero__badge-num { font-family: var(--font-serif); font-size: 36px; color: var(--text-dark); line-height: 1; }
-    .hero__badge-bot { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); }
-
-    /* ══════════════════════════════════════
-       MARQUEE STRIP
-    ══════════════════════════════════════ */
-    .marquee-strip {
-      background: var(--text-dark);
-      color: var(--white);
-      overflow: hidden;
-      padding: 14px 0;
-      white-space: nowrap;
-    }
-    .marquee-track {
-      display: inline-flex;
-      animation: marquee 28s linear infinite;
-    }
-    .marquee-track span {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0 40px;
-      opacity: 0.8;
-    }
-    .marquee-track .dot {
-      color: var(--accent);
-      font-size: 18px;
-      vertical-align: middle;
-      opacity: 1;
-    }
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      border-bottom: 1px solid var(--gray-200);
     }
 
-    /* ══════════════════════════════════════
-       INTRO / ABOUT
-    ══════════════════════════════════════ */
-    .intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .intro__img {
-      aspect-ratio: 4 / 5;
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    .intro__img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    .intro__img:hover img { transform: scale(1.04); }
-    .intro__text { padding: 20px 0; }
-    .intro__text h2 { margin-bottom: 24px; }
-    .intro__text p {
-      color: var(--text-mid);
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    .intro__text .btn { margin-top: 16px; }
-
-    /* Stats row */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-    .stat__num {
-      font-family: var(--font-serif);
-      font-size: 40px;
-      color: var(--text-dark);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat__label {
-      font-size: 13px;
-      color: var(--text-light);
-      letter-spacing: 0.5px;
+    .logo-img {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+      object-fit: contain;
     }
 
-    /* ══════════════════════════════════════
-       SERVICES
-    ══════════════════════════════════════ */
-    .services { background: var(--bg-alt); }
-    .services__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
-    }
-    .services__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .service-card {
-      background: var(--white);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform var(--ease), box-shadow var(--ease);
-      cursor: pointer;
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(43, 41, 38, 0.12);
-    }
-    .service-card__img {
-      aspect-ratio: 3 / 2;
-      overflow: hidden;
-    }
-    .service-card__img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .service-card:hover .service-card__img img { transform: scale(1.06); }
-    .service-card__body { padding: 28px 28px 32px; }
-    .service-card__tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 10px;
-    }
-    .service-card h3 { font-size: 22px; margin-bottom: 12px; }
-    .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
-    .service-card__footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .service-card__price {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      color: var(--text-dark);
-    }
-    .service-card__duration {
-      font-size: 13px;
-      color: var(--text-light);
-      letter-spacing: 0.5px;
-    }
-
-    /* ══════════════════════════════════════
-       DURATIONS
-    ══════════════════════════════════════ */
-    .durations__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .durations__left h2 { margin-bottom: 20px; }
-    .durations__left p { color: var(--text-mid); font-size: 17px; line-height: 1.8; margin-bottom: 32px; }
-    .duration-list { display: flex; flex-direction: column; gap: 16px; }
-    .duration-item {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      padding: 20px 24px;
-      background: var(--bg-alt);
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      transition: border-color var(--ease), background var(--ease);
-      cursor: pointer;
-    }
-    .duration-item:hover { border-color: var(--text-dark); background: var(--bg); }
-    .duration-item__min {
-      font-family: var(--font-serif);
-      font-size: 36px;
-      color: var(--text-dark);
-      line-height: 1;
-      min-width: 60px;
-    }
-    .duration-item__info h4 { font-size: 16px; font-family: var(--font-sans); font-weight: 500; margin-bottom: 2px; }
-    .duration-item__info p { font-size: 14px; color: var(--text-light); }
-    .duration-item__price {
-      margin-left: auto;
-      font-family: var(--font-serif);
-      font-size: 24px;
-      color: var(--text-dark);
-    }
-    .durations__right {
-      aspect-ratio: 4 / 5;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .durations__right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* ══════════════════════════════════════
-       MEMBERSHIP
-    ══════════════════════════════════════ */
-    .membership { background: var(--text-dark); color: var(--white); }
-    .membership h2 { color: var(--white); margin-bottom: 20px; }
-    .membership__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .membership__left p {
-      color: rgba(255,255,255,0.7);
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 32px;
-    }
-    .membership__left .overline { color: rgba(255,255,255,0.45); }
-    .perks { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
-    .perk {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .perk__icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(201, 164, 110, 0.25);
-      border: 1.5px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-    .perk__icon::after {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-    .perk__text { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.6; }
-    .membership__cards {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .membership-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      padding: 28px 32px;
-      position: relative;
-      transition: background var(--ease), border-color var(--ease);
-    }
-    .membership-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
-    .membership-card--featured {
-      background: rgba(201, 164, 110, 0.12);
-      border-color: var(--accent);
-    }
-    .membership-card--featured:hover { background: rgba(201, 164, 110, 0.18); }
-    .membership-card__badge {
-      position: absolute;
-      top: -1px;
-      right: 24px;
-      background: var(--accent);
-      color: var(--text-dark);
-      font-size: 10px;
+    .tagline {
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 0 0 4px 4px;
-    }
-    .membership-card__top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
-    .membership-card h3 { font-size: 20px; color: var(--white); margin-bottom: 4px; }
-    .membership-card__sub { font-size: 14px; color: rgba(255,255,255,0.5); }
-    .membership-card__price {
-      text-align: right;
-    }
-    .membership-card__amount {
-      font-family: var(--font-serif);
-      font-size: 32px;
-      color: var(--white);
-      line-height: 1;
-    }
-    .membership-card__per { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
-    .membership-card__divider {
-      height: 1px;
-      background: rgba(255,255,255,0.1);
-      margin: 16px 0;
-    }
-    .membership-card__features {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.7;
+      color: var(--gray-500);
+      margin-bottom: 10px;
     }
 
-    /* ══════════════════════════════════════
-       EXPERIENCE
-    ══════════════════════════════════════ */
-    .experience__header { text-align: center; max-width: 600px; margin: 0 auto 64px; }
-    .experience__header h2 { margin-bottom: 16px; }
-    .experience__header p { color: var(--text-mid); font-size: 17px; }
-    .experience__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-    }
-    .exp-tile {
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-    }
-    .exp-tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .exp-tile:hover img { transform: scale(1.08); }
-    .exp-tile__label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px 20px 20px;
-      background: linear-gradient(to top, rgba(43,41,38,0.7) 0%, transparent 100%);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transform: translateY(4px);
-      transition: transform var(--ease);
-    }
-    .exp-tile:hover .exp-tile__label { transform: translateY(0); }
-
-    /* ══════════════════════════════════════
-       TESTIMONIALS
-    ══════════════════════════════════════ */
-    .testimonials { background: var(--bg-alt); }
-    .testimonials__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
-    }
-    .stars {
-      color: var(--accent);
-      font-size: 18px;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-    .testimonials__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .testimonial-card {
-      background: var(--white);
-      border-radius: 4px;
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-    }
-    .testimonial-card blockquote {
-      font-size: 16px;
-      color: var(--text-mid);
-      line-height: 1.75;
-      flex: 1;
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-    .testimonial-card__author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .testimonial-card__avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--bg-alt);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .testimonial-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .testimonial-card__name { font-size: 15px; font-weight: 500; color: var(--text-dark); }
-    .testimonial-card__loc { font-size: 13px; color: var(--text-light); }
-
-    /* Rating summary */
-    .rating-summary {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      padding: 32px 0;
-      margin-bottom: 48px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .rating-num {
-      font-family: var(--font-serif);
-      font-size: 64px;
-      color: var(--text-dark);
-      line-height: 1;
-    }
-    .rating-right { }
-    .rating-bar-row { display: flex; align-items: center; gap: 10px; margin: 3px 0; }
-    .rating-bar-label { font-size: 13px; color: var(--text-light); width: 20px; }
-    .rating-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-    .rating-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
-
-    /* ══════════════════════════════════════
-       CTA BANNER
-    ══════════════════════════════════════ */
-    .cta-banner {
-      position: relative;
-      overflow: hidden;
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-    }
-    .cta-banner__bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1600&q=80&fit=crop');
-      background-size: cover;
-      background-position: center;
-    }
-    .cta-banner__overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(43, 41, 38, 0.55);
-    }
-    .cta-banner__content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      width: 100%;
-    }
-    .cta-banner__content .overline { color: rgba(255,255,255,0.6); margin-bottom: 20px; }
-    .cta-banner__content h2 { color: var(--white); font-style: italic; margin-bottom: 20px; font-size: clamp(32px, 5vw, 56px); }
-    .cta-banner__content p { color: rgba(255,255,255,0.75); font-size: 17px; max-width: 480px; margin: 0 auto 36px; }
-    .cta-banner__content .cta-btns { display: flex; gap: 16px; justify-content: center; }
-
-    /* ══════════════════════════════════════
-       LOCATIONS
-    ══════════════════════════════════════ */
-    .locations__header { text-align: center; margin-bottom: 56px; }
-    .locations__header h2 { margin-bottom: 12px; }
-    .locations__header p { color: var(--text-mid); font-size: 17px; }
-    .locations__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .location-card {
-      padding: 28px;
-      background: var(--bg-alt);
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      transition: border-color var(--ease), transform var(--ease);
-    }
-    .location-card:hover { border-color: var(--text-dark); transform: translateY(-4px); }
-    .location-card__city {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-    .location-card__addr { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
-    .location-card__link {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-mid);
+    .rating-bar {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: color var(--ease);
+      gap: 6px;
+      font-size: 0.875rem;
+      color: var(--gray-500);
     }
-    .location-card__link::after { content: '→'; }
-    .location-card:hover .location-card__link { color: var(--text-dark); }
 
-    /* ══════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════ */
-    .footer { background: var(--bg-dark); color: rgba(255,255,255,0.65); }
-    .footer__top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 60px;
-      padding: 80px 0 60px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    .badge-pill {
+      background: var(--navy);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 20px;
+      letter-spacing: 0.4px;
     }
-    .footer__brand-name {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      letter-spacing: 3px;
+
+    .stars { color: #FBBF24; letter-spacing: -1px; }
+
+    /* ── Address Block ── */
+    .address-block {
+      background: var(--white);
+      padding: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .address-block label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--navy);
       text-transform: uppercase;
-      color: var(--white);
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .address-input-wrap {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 12px 14px;
+      background: var(--white);
+      transition: border-color 0.15s;
+    }
+
+    .address-input-wrap:focus-within { border-color: var(--navy); }
+
+    .address-input-wrap input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      color: var(--gray-400);
+      font-family: var(--font-body);
+      background: transparent;
+    }
+
+    .phone-link {
+      display: block;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+
+    .phone-link a { color: var(--navy); text-decoration: none; font-weight: 600; }
+    .phone-link a:hover { text-decoration: underline; }
+
+    /* ── Packages ── */
+    .packages-section { padding: 28px 0 8px; }
+
+    .packages-section h2 {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 6px;
+      color: var(--navy);
+    }
+
+    .section-sub {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 22px;
+    }
+
+    .package-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--navy);
+    }
+
+    .package-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .package-name {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .package-price-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .package-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .chevron {
+      color: var(--blue-dark);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .package-features {
+      list-style: none;
       margin-bottom: 16px;
     }
-    .footer__brand-name span { font-style: italic; }
-    .footer__tagline { font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
-    .footer__socials { display: flex; gap: 16px; }
-    .footer__social {
-      width: 40px;
-      height: 40px;
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      background: var(--blue);
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      transition: border-color var(--ease), background var(--ease);
+      margin-top: 1px;
     }
-    .footer__social:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); }
-    .footer__col-title {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+
+    .check svg {
+      width: 10px; height: 10px;
+      stroke: var(--white); stroke-width: 2.5; fill: none;
+    }
+
+    .tier-link { color: var(--navy); text-decoration: none; font-weight: 700; }
+    .tier-link:hover { text-decoration: underline; }
+
+    .select-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
       color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: var(--font-body);
+      letter-spacing: 0.3px;
+    }
+
+    .select-btn:hover { background: var(--blue-dark); }
+
+    /* ── Social Proof ── */
+    .social-proof {
+      padding: 36px 0 28px;
+      text-align: center;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      margin-bottom: 0;
+    }
+
+    .social-proof h2 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--navy);
+    }
+
+    .social-proof .subtitle {
+      font-size: 0.875rem;
+      color: var(--gray-500);
       margin-bottom: 20px;
     }
-    .footer__col-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer__col-links a {
-      font-size: 15px;
-      transition: color var(--ease);
+
+    blockquote {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+      line-height: 1.5;
     }
-    .footer__col-links a:hover { color: var(--white); }
-    .footer__bottom {
+
+    .quote-attr {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .find-us {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .review-badges {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .review-badge {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 24px 0;
-      font-size: 13px;
-    }
-    .footer__legal { display: flex; gap: 24px; }
-    .footer__legal a:hover { color: var(--white); }
-
-    /* ══════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════ */
-    @media (max-width: 1024px) {
-      .intro { grid-template-columns: 1fr; gap: 48px; }
-      .intro__img { max-width: 600px; }
-      .services__grid { grid-template-columns: repeat(2, 1fr); }
-      .durations__inner { grid-template-columns: 1fr; gap: 48px; }
-      .membership__inner { grid-template-columns: 1fr; gap: 48px; }
-      .experience__grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
-      .locations__grid { grid-template-columns: repeat(2, 1fr); }
-      .footer__top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      gap: 8px;
+      background: var(--gray-bg);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--gray-700);
+      min-width: 120px;
+      border: 1px solid var(--gray-200);
     }
 
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .section { padding: 64px 0; }
-      .nav__links { display: none; }
-      .nav__menu-toggle { display: flex; }
-      .hero { min-height: 85vh; }
-      .hero__badge { display: none; }
-      .services__header { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .services__grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; gap: 24px; }
-      .experience__grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonials__header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .testimonials__grid { grid-template-columns: 1fr; }
-      .locations__grid { grid-template-columns: 1fr 1fr; }
-      .footer__top { grid-template-columns: 1fr; gap: 36px; }
-      .footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
-      .rating-summary { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .cta-banner__content .cta-btns { flex-direction: column; align-items: center; }
+    .badge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    @media (max-width: 480px) {
-      .experience__grid { grid-template-columns: 1fr 1fr; }
-      .locations__grid { grid-template-columns: 1fr; }
+    .badge-icon.yelp { background: #d32323; }
+    .badge-icon.gmaps { background: #fff; border: 1px solid var(--gray-200); }
+    .badge-icon svg { width: 26px; height: 26px; }
+
+    .badge-count {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .verified-dot {
+      width: 16px;
+      height: 16px;
+      background: #22C55E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .verified-dot svg { width: 9px; height: 9px; stroke: #fff; stroke-width: 2.5; fill: none; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 28px 16px;
+      text-align: center;
+    }
+
+    .footer-logo-img {
+      width: 160px;
+      height: auto;
+      display: block;
+      margin: 0 auto 14px;
+    }
+
+    .footer-copyright {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: var(--navy); }
+
+    .footer-blurb {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 10px;
+    }
+
+    .footer-blurb a { color: var(--blue); text-decoration: none; }
+
+    .footer-powered {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 10px;
+    }
+
+    .footer-powered a { color: var(--gray-400); text-decoration: none; }
+
+    /* ── Extras Panel ── */
+    .extras-panel {
+      position: fixed;
+      inset: 0;
+      background: var(--gray-bg);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+
+    .extras-panel.open { transform: translateX(0); }
+
+    /* header bar */
+    .extras-topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 18px 16px 14px;
+      text-align: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .extras-back {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.3rem;
+      color: var(--navy);
+      padding: 6px;
+      line-height: 1;
+    }
+
+    .extras-topbar h2 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 3px;
+    }
+
+    .extras-topbar p {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+
+    /* scrollable body */
+    .extras-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 0 16px;
+    }
+
+    .extras-section {
+      margin-bottom: 4px;
+    }
+
+    .extras-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 14px 16px 8px;
+    }
+
+    /* Required Details rows — checkbox LEFT */
+    .req-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--gray-200);
+      cursor: pointer;
+    }
+
+    .req-row:first-of-type { border-top: 1px solid var(--gray-200); }
+
+    .req-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--gray-200);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .req-row.checked .req-check {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .req-check svg { width: 13px; height: 13px; stroke: var(--white); stroke-width: 2.5; fill: none; opacity: 0; transition: opacity 0.1s; }
+    .req-row.checked .req-check svg { opacity: 1; }
+
+    .req-label { flex: 1; font-size: 0.9rem; color: var(--gray-800); }
+    .req-price { font-size: 0.875rem; color: var(--gray-500); font-weight: 600; }
+
+    /* Optional Extras rows — checkbox/stepper RIGHT */
+    .opt-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--white);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--gray-200);
+      gap: 12px;
+    }
+
+    .opt-row:first-of-type { border-top: 1px solid var(--gray-200); }
+
+    .opt-info { flex: 1; }
+    .opt-name { font-size: 0.9rem; color: var(--gray-800); display: block; margin-bottom: 2px; }
+    .opt-per  { font-size: 0.78rem; color: var(--gray-400); }
+    .opt-price-label { font-size: 0.85rem; color: var(--gray-500); display: block; margin-top: 2px; }
+
+    /* opt checkbox */
+    .opt-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--gray-200);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .opt-row.checked .opt-check {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .opt-check svg { width: 13px; height: 13px; stroke: var(--white); stroke-width: 2.5; fill: none; opacity: 0; transition: opacity 0.1s; }
+    .opt-row.checked .opt-check svg { opacity: 1; }
+
+    /* stepper */
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .step-btn {
+      width: 32px;
+      height: 32px;
+      background: var(--gray-100);
+      border: none;
+      font-size: 1.1rem;
+      color: var(--navy);
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.1s;
+    }
+
+    .step-btn:hover { background: var(--gray-200); }
+    .step-btn:disabled { color: var(--gray-400); cursor: default; }
+
+    .step-count {
+      width: 32px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--white);
+      border-left: 1px solid var(--gray-200);
+      border-right: 1px solid var(--gray-200);
+      height: 32px;
+      line-height: 32px;
+    }
+
+    /* footer actions */
+    .extras-footer {
+      flex-shrink: 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 14px 16px;
+    }
+
+    .schedule-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      margin-bottom: 10px;
+      transition: background 0.15s;
+    }
+
+    .schedule-btn:hover { background: var(--blue-dark); }
+
+    .add-another-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: transparent;
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      border: 2px solid var(--navy);
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      margin-bottom: 12px;
+      transition: background 0.15s;
+    }
+
+    .add-another-btn:hover { background: var(--navy-light); }
+
+    /* cart bar */
+    .cart-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 4px 2px;
+      border-top: 1px solid var(--gray-200);
+      cursor: pointer;
+    }
+
+    .cart-icon { font-size: 1.1rem; }
+
+    .cart-label {
+      flex: 1;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .cart-chevron {
+      font-size: 1rem;
+      color: var(--gray-500);
+      transform: rotate(0deg);
+      transition: transform 0.2s;
+    }
+
+    /* ── Schedule Panel ── */
+    .schedule-panel {
+      position: fixed;
+      inset: 0;
+      background: var(--gray-bg);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+
+    .schedule-panel.open { transform: translateX(0); }
+
+    .sched-topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 18px 16px 14px;
+      text-align: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .sched-back {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.3rem;
+      color: var(--navy);
+      padding: 6px;
+      line-height: 1;
+    }
+
+    .sched-topbar h2 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .sched-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 16px 16px;
+    }
+
+    /* Month nav */
+    .month-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .month-nav-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .month-nav-btn:hover { background: var(--blue-dark); }
+
+    .month-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      min-width: 130px;
+      text-align: center;
+    }
+
+    /* Day row */
+    .day-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 24px;
+      scrollbar-width: none;
+    }
+
+    .day-row::-webkit-scrollbar { display: none; }
+
+    .day-chip {
+      flex-shrink: 0;
+      width: 64px;
+      padding: 10px 4px;
+      border-radius: 12px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .day-chip.selected {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .day-chip .day-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .day-chip.selected .day-name { color: rgba(255,255,255,0.8); }
+
+    .day-chip .day-num {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .day-chip.selected .day-num { color: var(--white); }
+
+    .day-chip.disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Time sections */
+    .time-section-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .time-slot {
+      background: var(--blue-light);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 4px;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      font-family: var(--font-body);
+    }
+
+    .time-slot:hover { background: #d4e8ff; }
+
+    .time-slot.selected {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    /* Confirm footer */
+    .sched-footer {
+      flex-shrink: 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 14px 16px;
+      display: none;
+    }
+
+    .sched-footer.visible { display: block; }
+
+    .selected-summary {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .confirm-booking-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background 0.15s;
+    }
+
+    .confirm-booking-btn:hover { background: var(--blue-dark); }
+
+    /* booking confirmed overlay */
+    .booked-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .booked-overlay.open { opacity: 1; pointer-events: all; }
+
+    .booked-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 24px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .booked-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .booked-icon svg { width: 28px; height: 28px; stroke: #fff; stroke-width: 2.5; fill: none; }
+
+    .booked-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .booked-card p {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .booked-done {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: var(--blue);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: var(--font-body);
     }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════
-       NAV
-  ══════════════════════════════════════ -->
-  <nav class="nav" id="nav">
-    <div class="container">
-      <div class="nav__inner">
-        <a href="#" class="nav__logo">Top Feet</a>
-        <ul class="nav__links">
-          <li><a href="#services">Massages</a></li>
-          <li><a href="#membership">Membership</a></li>
-          <li><a href="#locations">Locations</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#">Gift Cards</a></li>
-        </ul>
-        <div class="nav__right">
-          <a href="#" class="btn btn-dark">Book Now</a>
-          <button class="nav__menu-toggle" aria-label="Menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
+  <!-- Header -->
+  <header>
+    <img
+      src="brand_assets/logo angels touch detailing.png"
+      alt="Angel's Touch Detailing"
+      class="logo-img"
+    />
+    <p class="tagline">Premium Auto Care, Defined</p>
+    <div class="rating-bar">
+      <span class="badge-pill">Top Rated</span>
+      <span>in Austin. 150+</span>
+      <span class="stars">★★★★★</span>
+      <span>reviews</span>
     </div>
-  </nav>
+  </header>
 
-  <!-- ══════════════════════════════════════
-       HERO
-  ══════════════════════════════════════ -->
-  <section class="hero">
-    <div class="hero__bg"></div>
-    <div class="hero__overlay"></div>
-    <div class="container">
-      <div class="hero__content">
-        <p class="hero__eyebrow">Premium Massage Boutique</p>
-        <h1>Feel better.<br>Right now.</h1>
-        <p class="hero__sub">Walk in or book online. Expert massages starting at $79. No commitment required — because you deserve to feel good today.</p>
-        <div class="hero__ctas">
-          <a href="#" class="btn btn-white">Book a Massage</a>
-          <a href="#membership" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.6);">Explore Membership</a>
-        </div>
-      </div>
+  <!-- Address -->
+  <div class="address-block">
+    <label for="address">Your Location</label>
+    <div class="address-input-wrap">
+      <input id="address" type="text" placeholder="Enter your address" autocomplete="street-address" />
     </div>
-    <div class="hero__badge">
-      <span class="hero__badge-top">Over</span>
-      <span class="hero__badge-num">50K</span>
-      <span class="hero__badge-bot">5-star reviews</span>
+    <p class="phone-link">
+      <span>📞</span>
+      Prefer to book by phone? <a href="tel:0000000000">Call Us</a>
+    </p>
+  </div>
+
+  <!-- Packages -->
+  <section class="packages-section">
+    <div class="container">
+      <h2>Our Packages</h2>
+      <p class="section-sub">Professional mobile detailing — we come to you</p>
+
+      <!-- Essential Wash -->
+      <div class="package-card">
+        <div class="package-header">
+          <span class="package-name">Essential Wash</span>
+          <div class="package-price-wrap">
+            <span class="package-price">$65</span>
+            <span class="chevron">›</span>
+          </div>
+        </div>
+        <ul class="package-features">
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Exterior hand wash &amp; rinse
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Wheel &amp; tire cleaning
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Window cleaning (exterior)
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Tire shine application
+          </li>
+        </ul>
+        <button class="select-btn">Select</button>
+      </div>
+
+      <!-- Interior Detail -->
+      <div class="package-card">
+        <div class="package-header">
+          <span class="package-name">Interior Detail</span>
+          <div class="package-price-wrap">
+            <span class="package-price">$99</span>
+            <span class="chevron">›</span>
+          </div>
+        </div>
+        <ul class="package-features">
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Everything in <a class="tier-link" href="#">Essential Wash+</a>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Full interior vacuum (seats, carpet, trunk)
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Dashboard &amp; console wipe-down
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Door panels &amp; jambs cleaned
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Interior windows cleaned
+          </li>
+        </ul>
+        <button class="select-btn">Select</button>
+      </div>
+
+      <!-- Exterior Detail -->
+      <div class="package-card">
+        <div class="package-header">
+          <span class="package-name">Exterior Detail</span>
+          <div class="package-price-wrap">
+            <span class="package-price">$149</span>
+            <span class="chevron">›</span>
+          </div>
+        </div>
+        <ul class="package-features">
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Everything in <a class="tier-link" href="#">Essential Wash+</a>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Clay bar paint decontamination
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Hand polish for gloss &amp; clarity
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Carnauba wax or paint sealant
+          </li>
+        </ul>
+        <button class="select-btn">Select</button>
+      </div>
+
+      <!-- Full Detail -->
+      <div class="package-card">
+        <div class="package-header">
+          <span class="package-name">Full Detail</span>
+          <div class="package-price-wrap">
+            <span class="package-price">$219</span>
+            <span class="chevron">›</span>
+          </div>
+        </div>
+        <ul class="package-features">
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Everything in <a class="tier-link" href="#">Interior Detail+</a>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Full exterior detail with clay &amp; wax
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Leather cleaning &amp; conditioning
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Carpet shampoo &amp; floor mat cleaning
+          </li>
+        </ul>
+        <button class="select-btn">Select</button>
+      </div>
+
+      <!-- Signature Package -->
+      <div class="package-card">
+        <div class="package-header">
+          <span class="package-name">Signature Package</span>
+          <div class="package-price-wrap">
+            <span class="package-price">$349</span>
+            <span class="chevron">›</span>
+          </div>
+        </div>
+        <ul class="package-features">
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Complete interior &amp; exterior detail
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Multi-stage paint correction
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Ceramic coating prep &amp; application
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Engine bay cleaning &amp; headlight restoration
+          </li>
+        </ul>
+        <button class="select-btn">Select</button>
+      </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       MARQUEE
-  ══════════════════════════════════════ -->
-  <div class="marquee-strip">
-    <div class="marquee-track">
-      <span>Swedish Massage</span><span class="dot">·</span>
-      <span>Deep Tissue</span><span class="dot">·</span>
-      <span>Sports Massage</span><span class="dot">·</span>
-      <span>Prenatal</span><span class="dot">·</span>
-      <span>Walk-Ins Welcome</span><span class="dot">·</span>
-      <span>Membership Available</span><span class="dot">·</span>
-      <span>60 · 90 · 120 Min</span><span class="dot">·</span>
-      <span>Swedish Massage</span><span class="dot">·</span>
-      <span>Deep Tissue</span><span class="dot">·</span>
-      <span>Sports Massage</span><span class="dot">·</span>
-      <span>Prenatal</span><span class="dot">·</span>
-      <span>Walk-Ins Welcome</span><span class="dot">·</span>
-      <span>Membership Available</span><span class="dot">·</span>
-      <span>60 · 90 · 120 Min</span><span class="dot">·</span>
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="container">
+      <h2>Trusted by Our Customers</h2>
+      <p class="subtitle">Hundreds of 5-star reviews from satisfied customers</p>
+
+      <blockquote>"Best detail I've ever had. My car looked brand new — and they came right to my driveway!"</blockquote>
+      <p class="quote-attr">— James R.</p>
+
+      <p class="find-us">Find us on Yelp and Google Maps</p>
+
+      <div class="review-badges">
+        <a href="#" class="review-badge">
+          <div class="badge-icon yelp">
+            <svg viewBox="0 0 24 24" fill="white">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/>
+            </svg>
+          </div>
+          <span class="badge-count">150+ Reviews</span>
+        </a>
+        <a href="#" class="review-badge">
+          <div class="badge-icon gmaps">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5" fill="white"/>
+            </svg>
+          </div>
+          <span class="badge-count">100+ Reviews</span>
+        </a>
+      </div>
+
+      <div class="verified">
+        <div class="verified-dot">
+          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+        </div>
+        Verified Business
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Extras Panel ── -->
+  <div id="extras-panel" class="extras-panel" aria-hidden="true">
+
+    <div class="extras-topbar">
+      <button class="extras-back" id="extras-back" aria-label="Go back">&#8592;</button>
+      <h2>Select Extra Services</h2>
+      <p>Customize your package with additional options and services.</p>
+    </div>
+
+    <div class="extras-body">
+
+      <!-- Required Details -->
+      <div class="extras-section">
+        <div class="extras-section-title">Required Details</div>
+
+        <div class="req-row" id="req-pet" data-price="30">
+          <div class="req-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          <span class="req-label">Pet Hair or Extra Dirty</span>
+          <span class="req-price">+$30</span>
+        </div>
+
+        <div class="req-row" id="req-bigcar" data-price="10">
+          <div class="req-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          <span class="req-label">Big Car (3-row SUV / Pickup)</span>
+          <span class="req-price">+$10</span>
+        </div>
+      </div>
+
+      <!-- Optional Extras -->
+      <div class="extras-section">
+        <div class="extras-section-title">Optional Extras</div>
+
+        <div class="opt-row" id="opt-lights" data-price="80">
+          <div class="opt-info">
+            <span class="opt-name">Lights Restoration</span>
+            <span class="opt-price-label">$80.00</span>
+          </div>
+          <div class="opt-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+        </div>
+
+        <!-- Paint Buff — stepper -->
+        <div class="opt-row" id="opt-paintbuff">
+          <div class="opt-info">
+            <span class="opt-name">Paint Buff and Restoration <span class="opt-per">(per panel)</span></span>
+            <span class="opt-price-label">$30.00</span>
+          </div>
+          <div class="stepper">
+            <button class="step-btn" id="pb-dec" aria-label="Decrease">&#8722;</button>
+            <span class="step-count" id="pb-count">0</span>
+            <button class="step-btn" id="pb-inc" aria-label="Increase">&#43;</button>
+          </div>
+        </div>
+
+        <div class="opt-row" id="opt-undercarriage" data-price="60">
+          <div class="opt-info">
+            <span class="opt-name">Undercarriage Cleaning</span>
+            <span class="opt-price-label">$60.00</span>
+          </div>
+          <div class="opt-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+        </div>
+
+        <div class="opt-row" id="opt-engine" data-price="40">
+          <div class="opt-info">
+            <span class="opt-name">Engine Cleaning</span>
+            <span class="opt-price-label">$40.00</span>
+          </div>
+          <div class="opt-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+        </div>
+
+        <div class="opt-row" id="opt-ozone" data-price="50">
+          <div class="opt-info">
+            <span class="opt-name">Ozone Treatment</span>
+            <span class="opt-price-label">$50.00</span>
+          </div>
+          <div class="opt-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /extras-body -->
+
+    <div class="extras-footer">
+      <button class="schedule-btn" id="schedule-btn">Schedule time</button>
+      <button class="add-another-btn" id="add-another-btn">Add another package</button>
+      <div class="cart-bar">
+        <span class="cart-icon">&#128203;</span>
+        <span class="cart-label" id="cart-label">1 Packages Selected — $0.00</span>
+        <span class="cart-chevron">&#8963;</span>
+      </div>
+    </div>
+
+  </div><!-- /extras-panel -->
+
+  <!-- Schedule Panel -->
+  <div id="schedule-panel" class="schedule-panel" aria-hidden="true">
+    <div class="sched-topbar">
+      <button class="sched-back" id="sched-back" aria-label="Go back">&#8592;</button>
+      <h2>Select Date &amp; Time</h2>
+    </div>
+
+    <div class="sched-body">
+      <!-- Month nav -->
+      <div class="month-nav">
+        <button class="month-nav-btn" id="week-prev">&#8592;</button>
+        <span class="month-label" id="month-label"></span>
+        <button class="month-nav-btn" id="week-next">&#8594;</button>
+      </div>
+
+      <!-- Day row -->
+      <div class="day-row" id="day-row"></div>
+
+      <!-- Time slots (rendered by JS) -->
+      <div id="time-slots-container"></div>
+    </div>
+
+    <div class="sched-footer" id="sched-footer">
+      <p class="selected-summary" id="selected-summary"></p>
+      <button class="confirm-booking-btn" id="confirm-booking-btn">Confirm Booking</button>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       INTRO / ABOUT
-  ══════════════════════════════════════ -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="intro">
-        <div class="intro__img">
-          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80&fit=crop" alt="Relaxing massage therapy" loading="lazy" />
-        </div>
-        <div class="intro__text">
-          <span class="overline">Our Philosophy</span>
-          <h2>Massage shouldn't be a luxury.<br>It should be a habit.</h2>
-          <p>We built Top Feet around a simple belief: regular massage improves your quality of life. That's why we make it accessible, consistent, and completely stress-free.</p>
-          <p>No upsells, no pressure, no gimmicks. Just expert therapists, premium products, and a space designed entirely around how you feel when you walk out the door.</p>
-          <a href="#services" class="btn btn-outline">See Our Services</a>
-          <div class="stats">
-            <div>
-              <div class="stat__num">1</div>
-              <div class="stat__label">Location in Richardson, TX</div>
-            </div>
-            <div>
-              <div class="stat__num">50K+</div>
-              <div class="stat__label">Five-star reviews</div>
-            </div>
-            <div>
-              <div class="stat__num">1M+</div>
-              <div class="stat__label">Massages performed</div>
-            </div>
-          </div>
-        </div>
+  <!-- Booking Confirmed Overlay -->
+  <div id="booked-overlay" class="booked-overlay" role="dialog" aria-modal="true">
+    <div class="booked-card">
+      <div class="booked-icon">
+        <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6"/></svg>
       </div>
+      <h3>You're booked!</h3>
+      <p id="booked-msg">We'll see you then.</p>
+      <button class="booked-done" id="booked-done">Done</button>
     </div>
-  </section>
+  </div>
 
-  <!-- ══════════════════════════════════════
-       SERVICES
-  ══════════════════════════════════════ -->
-  <section class="section services" id="services">
-    <div class="container">
-      <div class="services__header">
-        <div>
-          <span class="overline">What We Offer</span>
-          <h2>Every massage,<br>perfectly tailored.</h2>
-        </div>
-        <a href="#" class="btn btn-outline">View All Services</a>
-      </div>
-      <div class="services__grid">
-        <div class="service-card">
-          <div class="service-card__img">
-            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&fit=crop" alt="Swedish Massage" loading="lazy" />
-          </div>
-          <div class="service-card__body">
-            <div class="service-card__tag">Most Popular</div>
-            <h3>Swedish Massage</h3>
-            <p>Long, flowing strokes that melt away tension and leave you feeling completely renewed. The perfect introduction to massage therapy.</p>
-            <div class="service-card__footer">
-              <span class="service-card__price">From $79</span>
-              <span class="service-card__duration">60 / 90 / 120 min</span>
-            </div>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__img">
-            <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=600&q=80&fit=crop" alt="Deep Tissue Massage" loading="lazy" />
-          </div>
-          <div class="service-card__body">
-            <div class="service-card__tag">Therapeutic</div>
-            <h3>Deep Tissue Massage</h3>
-            <p>Targeted pressure that reaches deeper muscle layers to break up knots, relieve chronic pain, and restore full range of motion.</p>
-            <div class="service-card__footer">
-              <span class="service-card__price">From $89</span>
-              <span class="service-card__duration">60 / 90 / 120 min</span>
-            </div>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__img">
-            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80&fit=crop" alt="Sports Massage" loading="lazy" />
-          </div>
-          <div class="service-card__body">
-            <div class="service-card__tag">Active Recovery</div>
-            <h3>Sports Massage</h3>
-            <p>Designed for active bodies. Combines stretching and targeted techniques to speed up recovery, improve performance, and prevent injury.</p>
-            <div class="service-card__footer">
-              <span class="service-card__price">From $89</span>
-              <span class="service-card__duration">60 / 90 / 120 min</span>
-            </div>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__img">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80&fit=crop" alt="Prenatal Massage" loading="lazy" />
-          </div>
-          <div class="service-card__body">
-            <div class="service-card__tag">Specialty</div>
-            <h3>Prenatal Massage</h3>
-            <p>Gentle, safe techniques specifically designed for expectant mothers to ease discomfort, reduce swelling, and promote deep relaxation.</p>
-            <div class="service-card__footer">
-              <span class="service-card__price">From $89</span>
-              <span class="service-card__duration">60 / 90 / 120 min</span>
-            </div>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__img">
-            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&fit=crop" alt="CBD Massage" loading="lazy" />
-          </div>
-          <div class="service-card__body">
-            <div class="service-card__tag">Enhanced</div>
-            <h3>CBD Oil Add-On</h3>
-            <p>Elevate any massage with full-spectrum CBD oil for enhanced anti-inflammatory benefits, deeper relaxation, and faster recovery.</p>
-            <div class="service-card__footer">
-              <span class="service-card__price">+$25</span>
-              <span class="service-card__duration">Add to any service</span>
-            </div>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__img">
-            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80&fit=crop" alt="Aromatherapy" loading="lazy" />
-          </div>
-          <div class="service-card__body">
-            <div class="service-card__tag">Enhanced</div>
-            <h3>Aromatherapy Add-On</h3>
-            <p>Custom essential oil blends added to your session for targeted benefits — whether calming, energizing, or pain-relieving.</p>
-            <div class="service-card__footer">
-              <span class="service-card__price">+$15</span>
-              <span class="service-card__duration">Add to any service</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Footer -->
+  <footer>
+    <img
+      src="brand_assets/logo angels touch detailing.png"
+      alt="Angel's Touch Detailing"
+      class="footer-logo-img"
+    />
 
-  <!-- ══════════════════════════════════════
-       DURATIONS
-  ══════════════════════════════════════ -->
-  <section class="section" id="pricing">
-    <div class="container">
-      <div class="durations__inner">
-        <div class="durations__left">
-          <span class="overline">Session Lengths</span>
-          <h2>Choose the time that's right for you.</h2>
-          <p>Every session is designed to be complete in itself. Whether you have an hour or two, you'll leave feeling exactly how you came for.</p>
-          <div class="duration-list">
-            <div class="duration-item">
-              <span class="duration-item__min">60</span>
-              <div class="duration-item__info">
-                <h4>One Hour</h4>
-                <p>Full-body reset, perfectly efficient</p>
-              </div>
-              <span class="duration-item__price">$79</span>
-            </div>
-            <div class="duration-item">
-              <span class="duration-item__min">90</span>
-              <div class="duration-item__info">
-                <h4>Ninety Minutes</h4>
-                <p>Extended focus on problem areas</p>
-              </div>
-              <span class="duration-item__price">$109</span>
-            </div>
-            <div class="duration-item">
-              <span class="duration-item__min">120</span>
-              <div class="duration-item__info">
-                <h4>Two Hours</h4>
-                <p>Complete, unhurried full-body experience</p>
-              </div>
-              <span class="duration-item__price">$139</span>
-            </div>
-          </div>
-        </div>
-        <div class="durations__right">
-          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80&fit=crop" alt="Massage session" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
+    <p class="footer-copyright">© 2025 Angel's Touch Detailing</p>
 
-  <!-- ══════════════════════════════════════
-       MEMBERSHIP
-  ══════════════════════════════════════ -->
-  <section class="section membership" id="membership">
-    <div class="container">
-      <div class="membership__inner">
-        <div class="membership__left">
-          <span class="overline">Top Feet Membership</span>
-          <h2>Make feeling good<br>a monthly habit.</h2>
-          <p>Members save up to 30% on every visit, get priority booking, and earn rollover credits. Cancel anytime — no catch, no fine print.</p>
-          <div class="perks">
-            <div class="perk">
-              <div class="perk__icon"></div>
-              <span class="perk__text">One massage credit per month, fully rollover</span>
-            </div>
-            <div class="perk">
-              <div class="perk__icon"></div>
-              <span class="perk__text">Up to 30% off all additional services</span>
-            </div>
-            <div class="perk">
-              <div class="perk__icon"></div>
-              <span class="perk__text">Priority booking at our Richardson, TX location</span>
-            </div>
-            <div class="perk">
-              <div class="perk__icon"></div>
-              <span class="perk__text">Free add-ons and exclusive member events</span>
-            </div>
-            <div class="perk">
-              <div class="perk__icon"></div>
-              <span class="perk__text">Share credits with friends and family</span>
-            </div>
-          </div>
-          <a href="#" class="btn btn-white">Join Top Feet</a>
-        </div>
-        <div class="membership__cards">
-          <div class="membership-card">
-            <div class="membership-card__top">
-              <div>
-                <h3>60 Min Membership</h3>
-                <div class="membership-card__sub">One session per month</div>
-              </div>
-              <div class="membership-card__price">
-                <div class="membership-card__amount">$69</div>
-                <div class="membership-card__per">/ month</div>
-              </div>
-            </div>
-            <div class="membership-card__divider"></div>
-            <div class="membership-card__features">Swedish or Deep Tissue · Rollover credits · 20% off extras</div>
-          </div>
-          <div class="membership-card membership-card--featured">
-            <div class="membership-card__badge">Most Popular</div>
-            <div class="membership-card__top">
-              <div>
-                <h3>90 Min Membership</h3>
-                <div class="membership-card__sub">One session per month</div>
-              </div>
-              <div class="membership-card__price">
-                <div class="membership-card__amount">$89</div>
-                <div class="membership-card__per">/ month</div>
-              </div>
-            </div>
-            <div class="membership-card__divider"></div>
-            <div class="membership-card__features">Any massage type · Rollover credits · 25% off extras · Priority booking</div>
-          </div>
-          <div class="membership-card">
-            <div class="membership-card__top">
-              <div>
-                <h3>120 Min Membership</h3>
-                <div class="membership-card__sub">One session per month</div>
-              </div>
-              <div class="membership-card__price">
-                <div class="membership-card__amount">$109</div>
-                <div class="membership-card__per">/ month</div>
-              </div>
-            </div>
-            <div class="membership-card__divider"></div>
-            <div class="membership-card__features">Any massage type · Rollover credits · 30% off extras · Priority booking · Free add-on</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Gallery</a>
+      <a href="#">FAQ</a>
+      <a href="#">Terms &amp; Conditions</a>
+    </nav>
 
-  <!-- ══════════════════════════════════════
-       EXPERIENCE GALLERY
-  ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <div class="experience__header">
-        <span class="overline">The Experience</span>
-        <h2>Every detail, intentionally designed.</h2>
-        <p>From the moment you walk in to the moment you float out, every element of Top Feet is designed to make you feel exactly that.</p>
-      </div>
-    </div>
-    <div class="experience__grid">
-      <div class="exp-tile">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&fit=crop" alt="Spa interior" loading="lazy" />
-        <div class="exp-tile__label">Calm Interiors</div>
-      </div>
-      <div class="exp-tile">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&fit=crop" alt="Massage treatment" loading="lazy" />
-        <div class="exp-tile__label">Expert Therapists</div>
-      </div>
-      <div class="exp-tile">
-        <img src="https://images.unsplash.com/photo-1599598425947-5202edd56bdb?w=600&q=80&fit=crop" alt="Aromatherapy oils" loading="lazy" />
-        <div class="exp-tile__label">Premium Products</div>
-      </div>
-      <div class="exp-tile">
-        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80&fit=crop" alt="Relaxation" loading="lazy" />
-        <div class="exp-tile__label">Total Relaxation</div>
-      </div>
-    </div>
-  </section>
+    <p class="footer-blurb">
+      Angel's Touch Detailing – Professional mobile car detailing service.<br>
+      Serving the Dallas–Fort Worth area and nearby neighborhoods.<br>
+      Call <a href="tel:0000000000">(000) 000-0000</a> or email
+      <a href="mailto:info@angelstouchdetailing.com">info@angelstouchdetailing.com</a>.
+    </p>
 
-  <!-- ══════════════════════════════════════
-       TESTIMONIALS
-  ══════════════════════════════════════ -->
-  <section class="section testimonials">
-    <div class="container">
-      <div class="testimonials__header">
-        <div>
-          <span class="overline">Guest Reviews</span>
-          <h2>Thousands come in tense.<br>Everyone leaves renewed.</h2>
-        </div>
-        <a href="#" class="btn btn-outline">Read More Reviews</a>
-      </div>
-
-      <div class="rating-summary">
-        <div class="rating-num">4.9</div>
-        <div class="rating-right">
-          <div class="stars">★★★★★</div>
-          <div style="font-size:14px;color:var(--text-light);margin-bottom:12px;">Based on 50,000+ reviews</div>
-          <div class="rating-bar-row">
-            <span class="rating-bar-label">5</span>
-            <div class="rating-bar"><div class="rating-bar-fill" style="width:88%"></div></div>
-          </div>
-          <div class="rating-bar-row">
-            <span class="rating-bar-label">4</span>
-            <div class="rating-bar"><div class="rating-bar-fill" style="width:9%"></div></div>
-          </div>
-          <div class="rating-bar-row">
-            <span class="rating-bar-label">3</span>
-            <div class="rating-bar"><div class="rating-bar-fill" style="width:2%"></div></div>
-          </div>
-          <div class="rating-bar-row">
-            <span class="rating-bar-label">2</span>
-            <div class="rating-bar"><div class="rating-bar-fill" style="width:1%"></div></div>
-          </div>
-          <div class="rating-bar-row">
-            <span class="rating-bar-label">1</span>
-            <div class="rating-bar"><div class="rating-bar-fill" style="width:0%"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonials__grid">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <blockquote>"I've been to a lot of massage studios, but Top Feet is on another level. The therapist really listened to exactly what I needed and the 90 minute session flew by. Already booked my next one."</blockquote>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&fit=crop&crop=face" alt="Sarah M." />
-            </div>
-            <div>
-              <div class="testimonial-card__name">Sarah M.</div>
-              <div class="testimonial-card__loc">Los Angeles, CA</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <blockquote>"Top Feet membership has been a game changer for my recovery routine. As someone who runs marathons, having monthly access to their sports massage is worth every penny. The rollover credits are a huge bonus."</blockquote>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&fit=crop&crop=face" alt="Marcus T." />
-            </div>
-            <div>
-              <div class="testimonial-card__name">Marcus T.</div>
-              <div class="testimonial-card__loc">Austin, TX</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <blockquote>"I went in for my first prenatal massage and was nervous about how it would go. The therapist was incredibly knowledgeable and made me feel completely at ease. Best two hours of my pregnancy so far."</blockquote>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&fit=crop&crop=face" alt="Jessica L." />
-            </div>
-            <div>
-              <div class="testimonial-card__name">Jessica L.</div>
-              <div class="testimonial-card__loc">Denver, CO</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       CTA BANNER
-  ══════════════════════════════════════ -->
-  <section class="cta-banner">
-    <div class="cta-banner__bg"></div>
-    <div class="cta-banner__overlay"></div>
-    <div class="container cta-banner__content">
-      <span class="overline">Walk-ins Welcome</span>
-      <h2>Ready to feel better?<br>We're ready for you.</h2>
-      <p>Book online in 60 seconds, or just walk in. No forms, no wait lists, no stress. Just the best massage of your week.</p>
-      <div class="cta-btns">
-        <a href="#" class="btn btn-white">Book Online</a>
-        <a href="#locations" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.5);">Find a Location</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       LOCATIONS
-  ══════════════════════════════════════ -->
-  <section class="section" id="locations">
-    <div class="container">
-      <div class="locations__header">
-        <span class="overline">Find Us</span>
-        <h2>Come see us in Richardson, TX.</h2>
-        <p>Conveniently located and ready to welcome you.</p>
-      </div>
-      <div class="locations__grid" style="grid-template-columns: 1fr; max-width: 480px; margin: 0 auto;">
-        <div class="location-card">
-          <div class="location-card__city">Richardson, TX</div>
-          <div class="location-card__addr">322 E Polk St<br>Richardson, TX 75081</div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.143048706588!2d-96.73233012374243!3d32.94723247526674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c1f74930b64df%3A0x7768d29001cdb182!2sTop-Feet!5e0!3m2!1sen!2sus!4v1774332018587!5m2!1sen!2sus" width="100%" height="300" style="border:0;border-radius:8px;margin-top:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div>
-          <div class="footer__brand-name">Top Feet</div>
-          <p class="footer__tagline">Premium massage boutique. Walk-in friendly. Membership available. Located in Richardson, TX.</p>
-          <div class="footer__socials">
-            <a href="#" class="footer__social" aria-label="Instagram">IG</a>
-            <a href="#" class="footer__social" aria-label="Facebook">FB</a>
-            <a href="#" class="footer__social" aria-label="TikTok">TK</a>
-            <a href="#" class="footer__social" aria-label="X/Twitter">X</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer__col-title">Services</div>
-          <ul class="footer__col-links">
-            <li><a href="#">Swedish Massage</a></li>
-            <li><a href="#">Deep Tissue</a></li>
-            <li><a href="#">Sports Massage</a></li>
-            <li><a href="#">Prenatal Massage</a></li>
-            <li><a href="#">Add-Ons</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer__col-title">Company</div>
-          <ul class="footer__col-links">
-            <li><a href="#">About Top Feet</a></li>
-            <li><a href="#">Membership</a></li>
-            <li><a href="#">Gift Cards</a></li>
-            <li><a href="#">Franchise</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer__col-title">Support</div>
-          <ul class="footer__col-links">
-            <li><a href="#">Find a Location</a></li>
-            <li><a href="#">Book Online</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Therapist Login</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <div>© 2026 Top Feet Massage. All rights reserved.</div>
-        <div class="footer__legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Accessibility</a>
-        </div>
-      </div>
-    </div>
+    <p class="footer-powered">Premium Auto Care, Defined</p>
   </footer>
 
   <script>
-    // Nav scroll shadow
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    // ── State ──
+    const cart = [];
+    let currentPkg   = null;
+    let paintBuffQty = 0;
+    const PAINT_BUFF_PRICE = 30;
 
-    // Smooth reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
+    // ── Extras panel DOM ──
+    const extrasPanel   = document.getElementById('extras-panel');
+    const extrasBack    = document.getElementById('extras-back');
+    const cartLabel     = document.getElementById('cart-label');
+    const scheduleBtn   = document.getElementById('schedule-btn');
+    const addAnotherBtn = document.getElementById('add-another-btn');
+    const pbDec         = document.getElementById('pb-dec');
+    const pbInc         = document.getElementById('pb-inc');
+    const pbCount       = document.getElementById('pb-count');
+
+    // ── Schedule panel DOM ──
+    const schedPanel      = document.getElementById('schedule-panel');
+    const schedBack       = document.getElementById('sched-back');
+    const weekPrev        = document.getElementById('week-prev');
+    const weekNext        = document.getElementById('week-next');
+    const monthLabel      = document.getElementById('month-label');
+    const dayRow          = document.getElementById('day-row');
+    const timeSlotsContainer = document.getElementById('time-slots-container');
+    const schedFooter     = document.getElementById('sched-footer');
+    const selectedSummary = document.getElementById('selected-summary');
+    const confirmBookingBtn = document.getElementById('confirm-booking-btn');
+
+    // ── Booking overlay DOM ──
+    const bookedOverlay = document.getElementById('booked-overlay');
+    const bookedMsg     = document.getElementById('booked-msg');
+    const bookedDone    = document.getElementById('booked-done');
+
+    // ── Calendar state ──
+    let weekOffset    = 0;   // weeks from today
+    let selectedDate  = null;
+    let selectedTime  = null;
+
+    const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const MONTH_NAMES = ['January','February','March','April','May','June',
+                         'July','August','September','October','November','December'];
+
+    const MORNING_SLOTS   = ['8:00 AM','8:30 AM','9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM'];
+    const AFTERNOON_SLOTS = ['12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM'];
+
+    // ── Extras helpers ──
+    function extrasTotal() {
+      let t = 0;
+      document.querySelectorAll('.req-row.checked, .opt-row.checked').forEach(r => { t += parseInt(r.dataset.price, 10); });
+      t += paintBuffQty * PAINT_BUFF_PRICE;
+      return t;
+    }
+
+    function updateCartLabel() {
+      if (!currentPkg) return;
+      const total = currentPkg.basePrice + extrasTotal() +
+        cart.reduce((s, p) => s + p.basePrice + p.extrasTotal, 0);
+      const count = cart.length + 1;
+      cartLabel.textContent = `${count} Package${count > 1 ? 's' : ''} Selected — $${total}.00`;
+    }
+
+    // ── Open / close extras panel ──
+    document.querySelectorAll('.select-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card  = btn.closest('.package-card');
+        const name  = card.querySelector('.package-name').textContent.trim();
+        const price = parseInt(card.querySelector('.package-price').textContent.replace('$',''), 10);
+        openExtras(name, price);
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.service-card, .testimonial-card, .location-card, .membership-card, .duration-item').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
     });
+
+    function openExtras(name, price) {
+      currentPkg   = { name, basePrice: price };
+      paintBuffQty = 0;
+      pbCount.textContent = '0';
+      pbDec.disabled = true;
+      document.querySelectorAll('.req-row, .opt-row').forEach(r => r.classList.remove('checked'));
+      updateCartLabel();
+      extrasPanel.classList.add('open');
+      extrasPanel.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeExtras() {
+      extrasPanel.classList.remove('open');
+      extrasPanel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      currentPkg = null;
+    }
+
+    extrasBack.addEventListener('click', closeExtras);
+
+    document.querySelectorAll('.req-row').forEach(row => {
+      row.addEventListener('click', () => { row.classList.toggle('checked'); updateCartLabel(); });
+    });
+
+    document.querySelectorAll('.opt-row[data-price]').forEach(row => {
+      row.addEventListener('click', () => { row.classList.toggle('checked'); updateCartLabel(); });
+    });
+
+    pbInc.addEventListener('click', () => {
+      paintBuffQty++;
+      pbCount.textContent = paintBuffQty;
+      pbDec.disabled = false;
+      updateCartLabel();
+    });
+
+    pbDec.addEventListener('click', () => {
+      if (paintBuffQty > 0) {
+        paintBuffQty--;
+        pbCount.textContent = paintBuffQty;
+        pbDec.disabled = paintBuffQty === 0;
+        updateCartLabel();
+      }
+    });
+
+    addAnotherBtn.addEventListener('click', () => {
+      if (currentPkg) cart.push({ name: currentPkg.name, basePrice: currentPkg.basePrice, extrasTotal: extrasTotal() });
+      closeExtras();
+    });
+
+    // ── Open schedule panel ──
+    scheduleBtn.addEventListener('click', () => {
+      if (currentPkg) cart.push({ name: currentPkg.name, basePrice: currentPkg.basePrice, extrasTotal: extrasTotal() });
+      weekOffset   = 0;
+      selectedDate = null;
+      selectedTime = null;
+      schedFooter.classList.remove('visible');
+      renderCalendar();
+      schedPanel.classList.add('open');
+      schedPanel.setAttribute('aria-hidden', 'false');
+    });
+
+    schedBack.addEventListener('click', () => {
+      schedPanel.classList.remove('open');
+      schedPanel.setAttribute('aria-hidden', 'true');
+      // re-open extras so they can adjust
+      if (cart.length > 0) {
+        cart.pop(); // remove the one we just pushed
+      }
+      // just close both — user can start again
+      closeExtras();
+    });
+
+    // ── Calendar rendering ──
+    function getWeekDates() {
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const start = new Date(today);
+      start.setDate(today.getDate() + weekOffset * 7);
+      return Array.from({ length: 7 }, (_, i) => {
+        const d = new Date(start);
+        d.setDate(start.getDate() + i);
+        return d;
+      });
+    }
+
+    function renderCalendar() {
+      const days  = getWeekDates();
+      const today = new Date(); today.setHours(0,0,0,0);
+
+      // Month label — show unique months in the week
+      const months = [...new Set(days.map(d => MONTH_NAMES[d.getMonth()]))];
+      monthLabel.textContent = months.join('/');
+
+      // Day row
+      dayRow.innerHTML = '';
+      days.forEach(d => {
+        const chip = document.createElement('div');
+        chip.className = 'day-chip';
+        if (d < today) chip.classList.add('disabled');
+        if (selectedDate && d.toDateString() === selectedDate.toDateString()) chip.classList.add('selected');
+
+        chip.innerHTML = `<span class="day-name">${DAY_NAMES[d.getDay()]}</span>
+                          <span class="day-num">${d.getDate()}</span>`;
+
+        chip.addEventListener('click', () => {
+          selectedDate = new Date(d);
+          selectedTime = null;
+          schedFooter.classList.remove('visible');
+          renderCalendar();
+          renderTimeSlots();
+        });
+
+        dayRow.appendChild(chip);
+      });
+
+      // Render time slots if a date is selected
+      if (selectedDate) renderTimeSlots();
+    }
+
+    function renderTimeSlots() {
+      timeSlotsContainer.innerHTML = '';
+
+      function makeSection(label, slots) {
+        const heading = document.createElement('p');
+        heading.className = 'time-section-label';
+        heading.textContent = label;
+        timeSlotsContainer.appendChild(heading);
+
+        const grid = document.createElement('div');
+        grid.className = 'time-grid';
+
+        slots.forEach(time => {
+          const btn = document.createElement('button');
+          btn.className = 'time-slot';
+          btn.textContent = time;
+          if (selectedTime === time) btn.classList.add('selected');
+
+          btn.addEventListener('click', () => {
+            selectedTime = time;
+            renderTimeSlots();
+            const total = cart.reduce((s, p) => s + p.basePrice + p.extrasTotal, 0);
+            selectedSummary.textContent =
+              `${cart.map(p => p.name).join(', ')} · ${selectedDate.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} at ${selectedTime} · $${total}.00`;
+            schedFooter.classList.add('visible');
+          });
+
+          grid.appendChild(btn);
+        });
+
+        timeSlotsContainer.appendChild(grid);
+      }
+
+      makeSection('Morning',   MORNING_SLOTS);
+      makeSection('Afternoon', AFTERNOON_SLOTS);
+    }
+
+    weekPrev.addEventListener('click', () => { weekOffset--; selectedDate = null; selectedTime = null; schedFooter.classList.remove('visible'); renderCalendar(); timeSlotsContainer.innerHTML = ''; });
+    weekNext.addEventListener('click', () => { weekOffset++; selectedDate = null; selectedTime = null; schedFooter.classList.remove('visible'); renderCalendar(); timeSlotsContainer.innerHTML = ''; });
+
+    // ── Confirm booking ──
+    confirmBookingBtn.addEventListener('click', () => {
+      const total = cart.reduce((s, p) => s + p.basePrice + p.extrasTotal, 0);
+      bookedMsg.textContent =
+        `${selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} at ${selectedTime}. Total: $${total}.00. We'll send a confirmation shortly!`;
+      bookedOverlay.classList.add('open');
+    });
+
+    bookedDone.addEventListener('click', () => {
+      bookedOverlay.classList.remove('open');
+      schedPanel.classList.remove('open');
+      schedPanel.setAttribute('aria-hidden', 'true');
+      extrasPanel.classList.remove('open');
+      extrasPanel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      cart.length = 0;
+      currentPkg  = null;
+    });
+
+    pbDec.disabled = true;
   </script>
 </body>
 </html>
